@@ -1,36 +1,175 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tuncay.dev - Modern Portfolio & Blog Website
 
-## Getting Started
+Bu, modern web teknolojileri kullanılarak geliştirilmiş bir portfolyo ve blog websitesidir. Next.js, TypeScript ve Tailwind CSS ile oluşturulmuştur.
 
-First, run the development server:
+## 🚀 Özellikler
 
+- **Modern Tasarım**: Responsive ve kullanıcı dostu arayüz
+- **Portfolio Bölümleri**: Projeler, deneyimler ve eğitim bilgileri
+- **Markdown Blog Sistemi**: Kolay içerik yönetimi
+- **Kod Syntax Highlighting**: Blog yazılarında kod blokları için
+- **TypeScript**: Tip güvenliği için
+- **SEO Optimizasyonu**: Arama motorları için optimize edilmiş
+- **Dark Mode Desteği**: Karanlık tema desteği
+
+## 🛠️ Teknolojiler
+
+- **Frontend**: Next.js 15, React, TypeScript
+- **Styling**: Tailwind CSS
+- **Icons**: Lucide React
+- **Markdown**: Gray Matter, Remark
+- **Date Formatting**: date-fns
+- **Font**: Inter
+
+## 📁 Proje Yapısı
+
+```
+src/
+├── app/                    # Next.js App Router
+│   ├── about/             # Hakkımda sayfası
+│   ├── blog/              # Blog sayfaları
+│   ├── contact/           # İletişim sayfası
+│   ├── projects/          # Projeler sayfası
+│   └── page.tsx           # Ana sayfa
+├── components/            # Reusable React bileşenleri
+├── data/                  # Static veri dosyaları
+├── lib/                   # Utility fonksiyonları
+└── types/                 # TypeScript tip tanımları
+
+content/
+└── blog/                  # Markdown blog yazıları
+```
+
+## 🚀 Başlangıç
+
+### Gereksinimler
+
+- Node.js 18+ 
+- npm, yarn, pnpm veya bun
+
+### Kurulum
+
+1. Repository'yi klonlayın:
+```bash
+git clone <repository-url>
+cd tncy-dev
+```
+
+2. Bağımlılıkları yükleyin:
+```bash
+npm install
+# veya
+yarn install
+# veya
+pnpm install
+# veya
+bun install
+```
+
+3. Geliştirme sunucusunu başlatın:
 ```bash
 npm run dev
-# or
+# veya
 yarn dev
-# or
+# veya
 pnpm dev
-# or
+# veya
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Tarayıcınızda [http://localhost:3000](http://localhost:3000) adresini açın.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📝 İçerik Yönetimi
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Blog Yazısı Ekleme
 
-## Learn More
+1. `content/blog/` dizinine yeni `.md` dosyası oluşturun
+2. Dosyanın başına frontmatter ekleyin:
 
-To learn more about Next.js, take a look at the following resources:
+```markdown
+---
+title: "Blog Yazısının Başlığı"
+description: "Kısa açıklama"
+date: "2024-01-15"
+author: "Yazar Adı"
+tags: ["tag1", "tag2", "tag3"]
+featured: true
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# İçerik buraya gelir
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Markdown formatında yazınızı yazabilirsiniz...
+```
 
-## Deploy on Vercel
+### Proje Ekleme
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+`src/data/index.ts` dosyasındaki `projects` array'ine yeni proje ekleyin:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```typescript
+{
+  id: "unique-id",
+  title: "Proje Adı",
+  description: "Proje açıklaması",
+  technologies: ["React", "Next.js", "TypeScript"],
+  demoUrl: "https://demo-url.com",
+  githubUrl: "https://github.com/username/repo",
+  featured: true
+}
+```
+
+### Kişisel Bilgileri Güncelleme
+
+`src/data/index.ts` dosyasındaki `personalInfo`, `experiences` ve `education` objelerini düzenleyin.
+
+## 🎨 Özelleştirme
+
+### Renk Teması
+
+Tailwind CSS kullanılarak renk teması `tailwind.config.ts` dosyasından özelleştirilebilir.
+
+### Font
+
+Layout dosyasında Inter font kullanılmaktadır. Farklı font kullanmak için `src/app/layout.tsx` dosyasını düzenleyin.
+
+## 📦 Derleme
+
+Production için derleme:
+
+```bash
+npm run build
+npm run start
+```
+
+## 🚀 Deploy
+
+### Vercel (Önerilen)
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=<repository-url>)
+
+### Diğer Platformlar
+
+- **Netlify**: `npm run build` sonrası `out` klasörünü deploy edin
+- **GitHub Pages**: GitHub Actions ile otomatik deploy
+- **Railway**: Otomatik Next.js algılama
+
+## 🤝 Katkıda Bulunma
+
+1. Fork edin
+2. Feature branch oluşturun (`git checkout -b feature/AmazingFeature`)
+3. Commit edin (`git commit -m 'Add some AmazingFeature'`)
+4. Branch'e push edin (`git push origin feature/AmazingFeature`)
+5. Pull Request oluşturun
+
+## 📄 Lisans
+
+Bu proje MIT lisansı altındadır. Detaylar için `LICENSE` dosyasını inceleyin.
+
+## 📞 İletişim
+
+- **E-posta**: tuncay@example.com
+- **GitHub**: [https://github.com/tuncay](https://github.com/tuncay)
+- **LinkedIn**: [https://linkedin.com/in/tuncay](https://linkedin.com/in/tuncay)
+
+---
+
+⭐ Bu projeyi beğendiyseniz star vermeyi unutmayın!
