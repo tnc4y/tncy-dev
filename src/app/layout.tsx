@@ -11,6 +11,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://tncy.dev'),
   title: {
     default: "Tuncay - Embedded Systems & IoT Developer",
     template: "%s | tncy.dev",
