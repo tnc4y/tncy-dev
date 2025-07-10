@@ -118,13 +118,13 @@ export const experiences: Experience[] = [
 export const education: Education[] = [
   {
     id: "1",
-    institution: "İstanbul Teknik Üniversitesi",
+    institution: "Çukurova Üniversitesi",
     degree: "Lisans",
-    field: "Elektrik-Elektronik Mühendisliği",
-    startDate: "2015-09",
-    endDate: "2019-06",
+    field: "Computer Science",
+    startDate: "2024-09",
+    endDate: "2028-06",
     description: "Gömülü sistemler, mikroişlemciler, dijital sinyal işleme, kontrol sistemleri ve elektronik devre tasarımı üzerine kapsamlı eğitim.",
-    gpa: "3.4/4.0"
+    gpa: "3.2/4.0"
   },
   {
     id: "2",
