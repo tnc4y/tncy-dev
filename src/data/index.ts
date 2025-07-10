@@ -2,6 +2,7 @@ import { PersonalInfo, Project, Experience, Education } from '@/types';
 
 export const personalInfo: PersonalInfo = {
   name: "Tuncay",
+  profileImage: "https://tncy-dev.vercel.app/profile.jpeg",
   title: "Embedded Systems & IoT Developer",
   email: "tuncay@example.com",
   location: "İstanbul, Türkiye",
