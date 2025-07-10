@@ -18,9 +18,17 @@ export default function AboutPage() {
         <section className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 mb-12">
           <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8">
             {/* Profile Image Placeholder */}
-            <div className="w-48 h-48 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-white text-6xl font-bold shadow-lg">
+            {personalInfo.profileImage ? (
+              <img
+              src={personalInfo.profileImage}
+              alt={`${personalInfo.name} profil fotoğrafı`}
+              className="w-48 h-48 rounded-full object-cover shadow-lg border-4 border-blue-400 dark:border-blue-600"
+              />
+            ) : (
+              <div className="w-48 h-48 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-white text-6xl font-bold shadow-lg">
               {personalInfo.name.charAt(0)}
-            </div>
+              </div>
+            )}
             
             <div className="flex-1 text-center lg:text-left">
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
