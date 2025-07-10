@@ -2,7 +2,17 @@
   "name": "tncy-dev",
   "version": "1.0.0",
   "description": "Modern Embedded Systems & IoT Portfolio Website",
-  "keywords": ["nextjs", "typescript", "tailwindcss", "portfolio", "blog", "embedded-systems", "iot", "esp32", "stm32"],
+  "keywords": [
+    "nextjs",
+    "typescript",
+    "tailwindcss",
+    "portfolio",
+    "blog",
+    "embedded-systems",
+    "iot",
+    "esp32",
+    "stm32"
+  ],
   "author": "tncy.dev",
   "license": "MIT",
   "homepage": "https://tncy.dev",
@@ -24,6 +34,7 @@
   "dependencies": {
     "@types/prismjs": "^1.26.5",
     "@types/react-syntax-highlighter": "^15.5.13",
+    "@vercel/analytics": "^1.5.0",
     "autoprefixer": "^10.4.21",
     "date-fns": "^4.1.0",
     "gray-matter": "^4.0.3",
