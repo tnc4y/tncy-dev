@@ -14,25 +14,31 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL('https://tncy.dev'),
   title: {
-    default: "Tuncay - Web and Mobile Developer",
+    default: "Tuncay - Web & Mobile Developer",
     template: "%s | tncy.dev",
   },
   description: "Websitesi ve Mobil Uygulama geliştiriyorum.",
-  keywords: ["ESP32", "STM32", "IoT", "Embedded Systems", "LoRa", "Matter", "Arduino", "Flutter", "Mobile Development"],
+  keywords: ["Flutter", "Mobile Development"],
   authors: [{ name: "Tuncay" }],
   openGraph: {
     type: "website",
     locale: "tr_TR",
     url: "https://tncy.dev",
     siteName: "tncy.dev",
-    title: "Tuncay - Web and Mobile Developer",
-    description: "Embedded Systems ve IoT Developer. ESP32, STM32, LoRa, Matter, Arduino projeleri ve blog yazıları.",
+    title: "Tuncay - Web & Mobile Developer",
+    description: "Websitesi ve Mobil Uygulama geliştiriyorum.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tuncay - Web and Mobile Developer",
-    description: "Embedded Systems ve IoT Developer. ESP32, STM32, LoRa, Matter, Arduino projeleri ve blog yazıları.",
+    title: "Tuncay - Web & Mobile Developer",
+    description: "Websitesi ve Mobil Uygulama geliştiriyorum.",
     creator: "@tuncay",
+    images: [
+      {
+        url: "https://tncy.dev/profile.jpeg",
+        alt: "Tuncay - Web & Mobile Developer",
+      },
+    ],
   },
 };
 
