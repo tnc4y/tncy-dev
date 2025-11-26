@@ -12,7 +12,7 @@ interface BlogContentProps {
 // Basit syntax highlighting fonksiyonu
 function highlightCode(code: string, language: string) {
   if (!language) return code;
-  
+
   // JavaScript/TypeScript
   if (['javascript', 'js', 'typescript', 'ts', 'jsx', 'tsx'].includes(language)) {
     return code
@@ -22,7 +22,7 @@ function highlightCode(code: string, language: string) {
       .replace(/(\d+)/g, '<span class="text-orange-400">$1</span>')
       .replace(/(\{|\}|\[|\]|\(|\))/g, '<span class="text-yellow-400">$1</span>');
   }
-  
+
   // CSS
   if (['css', 'scss', 'sass'].includes(language)) {
     return code
@@ -31,7 +31,7 @@ function highlightCode(code: string, language: string) {
       .replace(/(:.*?;)/g, '<span class="text-orange-400">$1</span>')
       .replace(/(\/\*[\s\S]*?\*\/)/g, '<span class="text-gray-500">$1</span>');
   }
-  
+
   // HTML
   if (['html', 'xml'].includes(language)) {
     return code
@@ -39,7 +39,7 @@ function highlightCode(code: string, language: string) {
       .replace(/([\w-]+)(?==)/g, '<span class="text-blue-400">$1</span>')
       .replace(/(=["'].*?["'])/g, '<span class="text-green-400">$1</span>');
   }
-  
+
   return code;
 }
 
@@ -76,10 +76,10 @@ function CodeBlock({ language, code }: { language: string; code: string }) {
           <span className="text-xs font-medium">{copied ? 'Kopyalandı!' : 'Kopyala'}</span>
         </button>
       </div>
-      
+
       {/* Code content */}
       <pre className="bg-gray-900 text-gray-100 p-4 rounded-b-lg overflow-x-auto font-mono text-sm leading-relaxed border border-gray-700 border-t-0">
-        <code 
+        <code
           dangerouslySetInnerHTML={{ __html: highlightedCode }}
           className="text-gray-100"
         />
@@ -90,48 +90,49 @@ function CodeBlock({ language, code }: { language: string; code: string }) {
 
 export default function BlogContent({ content }: BlogContentProps) {
   return (
-    <div className="prose prose-lg max-w-none">
+    <div className="prose prose-lg dark:prose-invert max-w-none">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
           code: ({ className, children, ...props }: any) => {
             const match = /language-(\w+)/.exec(className || '');
-            
+
             if (!match) {
               // Inline code
               return (
                 <code
-                  className="bg-gray-100 dark:bg-gray-800 text-pink-600 dark:text-pink-400 px-2 py-1 rounded text-sm font-mono font-medium"
+                  className="bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 px-1.5 py-0.5 rounded text-sm font-mono font-medium"
                   {...props}
                 >
                   {children}
                 </code>
               );
             }
-            
+
             // Code block
             const language = match[1];
             const codeString = String(children).replace(/\n$/, '');
-            
+
             return <CodeBlock language={language} code={codeString} />;
           },
           h1: ({ children, ...props }: any) => (
-            <h1 className="text-4xl font-bold mt-12 mb-6 text-gray-900 dark:text-white first:mt-0 pb-2 border-b border-gray-200 dark:border-gray-700" {...props}>
+            <h1 className="text-4xl font-bold mt-12 mb-6 text-gray-900 dark:text-white first:mt-0 pb-4 border-b border-gray-200 dark:border-gray-800" {...props}>
               {children}
             </h1>
           ),
           h2: ({ children, ...props }: any) => (
-            <h2 className="text-3xl font-bold mt-10 mb-5 text-gray-900 dark:text-white" {...props}>
+            <h2 className="text-3xl font-bold mt-10 mb-5 text-gray-900 dark:text-white flex items-center gap-2" {...props}>
+              <span className="w-1.5 h-8 bg-gradient-to-b from-primary-500 to-purple-600 rounded-full"></span>
               {children}
             </h2>
           ),
           h3: ({ children, ...props }: any) => (
-            <h3 className="text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-white" {...props}>
+            <h3 className="text-2xl font-bold mt-8 mb-4 text-gray-900 dark:text-white" {...props}>
               {children}
             </h3>
           ),
           h4: ({ children, ...props }: any) => (
-            <h4 className="text-xl font-semibold mt-6 mb-3 text-gray-900 dark:text-white" {...props}>
+            <h4 className="text-xl font-bold mt-6 mb-3 text-gray-900 dark:text-white" {...props}>
               {children}
             </h4>
           ),
@@ -145,7 +146,7 @@ export default function BlogContent({ content }: BlogContentProps) {
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 underline decoration-2 underline-offset-2 transition-all duration-200 hover:decoration-blue-600"
+              className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 underline decoration-2 underline-offset-2 transition-all duration-200 hover:decoration-primary-600 decoration-primary-300/50"
               {...props}
             >
               {children}
@@ -163,23 +164,23 @@ export default function BlogContent({ content }: BlogContentProps) {
           ),
           li: ({ children, ...props }: any) => (
             <li className="flex items-start space-x-3" {...props}>
-              <span className="text-blue-500 mt-2 flex-shrink-0">•</span>
+              <span className="text-primary-500 mt-2 flex-shrink-0">•</span>
               <span className="flex-1">{children}</span>
             </li>
           ),
           strong: ({ children, ...props }: any) => (
-            <strong className="font-bold text-gray-900 dark:text-white bg-yellow-100 dark:bg-yellow-900 px-1 py-0.5 rounded" {...props}>
+            <strong className="font-bold text-gray-900 dark:text-white bg-yellow-100 dark:bg-yellow-900/30 px-1 py-0.5 rounded" {...props}>
               {children}
             </strong>
           ),
           em: ({ children, ...props }: any) => (
-            <em className="italic text-gray-600 dark:text-gray-400" {...props}>{children}</em>
+            <em className="italic text-gray-600 dark:text-gray-400 font-serif" {...props}>{children}</em>
           ),
           blockquote: ({ children, ...props }: any) => (
-            <blockquote className="border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-900/20 pl-6 pr-4 py-4 my-6 italic text-gray-700 dark:text-gray-300 rounded-r-lg" {...props}>
+            <blockquote className="border-l-4 border-primary-500 bg-primary-50 dark:bg-primary-900/10 pl-6 pr-4 py-4 my-8 italic text-gray-700 dark:text-gray-300 rounded-r-xl" {...props}>
               <div className="flex items-start space-x-3">
-                <span className="text-blue-500 text-2xl leading-none">"</span>
-                <div className="flex-1">{children}</div>
+                <span className="text-primary-500 text-4xl leading-none font-serif opacity-50">"</span>
+                <div className="flex-1 pt-1">{children}</div>
               </div>
             </blockquote>
           ),

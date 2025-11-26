@@ -19,10 +19,10 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulated form submission
     await new Promise(resolve => setTimeout(resolve, 1000));
-    
+
     setSubmitted(true);
     setIsSubmitting(false);
     setFormData({ name: '', email: '', subject: '', message: '' });
@@ -36,61 +36,61 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12">
+    <div className="min-h-screen pt-24 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="flex justify-center mb-6">
-            <div className="p-4 bg-blue-100 dark:bg-blue-900 rounded-full">
-              <Mail className="w-12 h-12 text-blue-600 dark:text-blue-400" />
+        <div className="text-center mb-16 max-w-3xl mx-auto">
+          <div className="inline-flex justify-center mb-6">
+            <div className="p-4 bg-primary-50 dark:bg-primary-900/30 rounded-2xl text-primary-600 dark:text-primary-400 animate-fade-in">
+              <Mail className="w-10 h-10" />
             </div>
           </div>
-          
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 animate-slide-up">
             İletişime Geçin
           </h1>
-          
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Projeleriniz, iş fırsatları veya herhangi bir konuda benimle iletişime geçmekten çekinmeyin. 
+
+          <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed animate-slide-up" style={{ animationDelay: '0.1s' }}>
+            Projeleriniz, iş fırsatları veya herhangi bir konuda benimle iletişime geçmekten çekinmeyin.
             En kısa sürede size geri dönüş yapacağım.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Information */}
-          <div>
+          <div className="animate-slide-up" style={{ animationDelay: '0.2s' }}>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
               İletişim Bilgileri
             </h2>
-            
+
             <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-blue-100 dark:bg-blue-900 rounded-lg">
-                  <Mail className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+              <div className="glass p-6 rounded-2xl flex items-start gap-4 hover:-translate-y-1 transition-transform">
+                <div className="p-3 bg-primary-50 dark:bg-primary-900/30 rounded-xl text-primary-600 dark:text-primary-400">
+                  <Mail className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white mb-1">
+                  <h3 className="font-bold text-gray-900 dark:text-white mb-1">
                     E-posta
                   </h3>
-                  <a 
+                  <a
                     href={`mailto:${personalInfo.email}`}
-                    className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                    className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                   >
                     {personalInfo.email}
                   </a>
                 </div>
               </div>
-              
+
               {personalInfo.phone && (
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-green-100 dark:bg-green-900 rounded-lg">
-                    <Phone className="w-6 h-6 text-green-600 dark:text-green-400" />
+                <div className="glass p-6 rounded-2xl flex items-start gap-4 hover:-translate-y-1 transition-transform">
+                  <div className="p-3 bg-green-50 dark:bg-green-900/30 rounded-xl text-green-600 dark:text-green-400">
+                    <Phone className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-white mb-1">
+                    <h3 className="font-bold text-gray-900 dark:text-white mb-1">
                       Telefon
                     </h3>
-                    <a 
+                    <a
                       href={`tel:${personalInfo.phone}`}
                       className="text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors"
                     >
@@ -99,13 +99,13 @@ export default function ContactForm() {
                   </div>
                 </div>
               )}
-              
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-purple-100 dark:bg-purple-900 rounded-lg">
-                  <MapPin className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+
+              <div className="glass p-6 rounded-2xl flex items-start gap-4 hover:-translate-y-1 transition-transform">
+                <div className="p-3 bg-red-50 dark:bg-red-900/30 rounded-xl text-red-600 dark:text-red-400">
+                  <MapPin className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white mb-1">
+                  <h3 className="font-bold text-gray-900 dark:text-white mb-1">
                     Konum
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
@@ -117,39 +117,39 @@ export default function ContactForm() {
 
             {/* Social Links */}
             <div className="mt-12">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-6">
                 Sosyal Medya
               </h3>
-              
+
               <div className="flex gap-4">
                 {personalInfo.socialLinks.github && (
                   <Link
                     href={personalInfo.socialLinks.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 bg-gray-900 dark:bg-gray-700 text-white rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors"
+                    className="p-3 bg-gray-900 dark:bg-gray-800 text-white rounded-xl hover:bg-gray-800 dark:hover:bg-gray-700 transition-all hover:-translate-y-1 shadow-lg shadow-gray-900/20"
                   >
                     <Github size={24} />
                   </Link>
                 )}
-                
+
                 {personalInfo.socialLinks.linkedin && (
                   <Link
                     href={personalInfo.socialLinks.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                    className="p-3 bg-[#0077b5] text-white rounded-xl hover:bg-[#006396] transition-all hover:-translate-y-1 shadow-lg shadow-blue-900/20"
                   >
                     <Linkedin size={24} />
                   </Link>
                 )}
-                
+
                 {personalInfo.socialLinks.twitter && (
                   <Link
                     href={personalInfo.socialLinks.twitter}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition-colors"
+                    className="p-3 bg-[#1da1f2] text-white rounded-xl hover:bg-[#1a91da] transition-all hover:-translate-y-1 shadow-lg shadow-sky-900/20"
                   >
                     <Twitter size={24} />
                   </Link>
@@ -159,25 +159,25 @@ export default function ContactForm() {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
+          <div className="glass rounded-3xl p-8 animate-slide-up" style={{ animationDelay: '0.3s' }}>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
               Mesaj Gönder
             </h2>
-            
+
             {submitted ? (
-              <div className="text-center py-8">
-                <div className="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Send className="w-8 h-8 text-green-600 dark:text-green-400" />
+              <div className="text-center py-12">
+                <div className="w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-6 animate-scale-in">
+                  <Send className="w-10 h-10 text-green-600 dark:text-green-400" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
                   Mesajınız Gönderildi!
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-gray-600 dark:text-gray-300 mb-8">
                   En kısa sürede size geri dönüş yapacağım.
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}
-                  className="mt-4 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium"
+                  className="px-8 py-3 bg-primary-600 text-white rounded-xl hover:bg-primary-700 transition-colors font-medium shadow-lg shadow-primary-600/25"
                 >
                   Yeni mesaj gönder
                 </button>
@@ -196,11 +196,11 @@ export default function ContactForm() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                      className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 focus:border-transparent bg-white/50 dark:bg-gray-900/50 text-gray-900 dark:text-white backdrop-blur-sm transition-all"
                       placeholder="Adınızı girin"
                     />
                   </div>
-                  
+
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                       E-posta
@@ -212,12 +212,12 @@ export default function ContactForm() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                      className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 focus:border-transparent bg-white/50 dark:bg-gray-900/50 text-gray-900 dark:text-white backdrop-blur-sm transition-all"
                       placeholder="E-posta adresinizi girin"
                     />
                   </div>
                 </div>
-                
+
                 <div>
                   <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Konu
@@ -229,11 +229,11 @@ export default function ContactForm() {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                    className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 focus:border-transparent bg-white/50 dark:bg-gray-900/50 text-gray-900 dark:text-white backdrop-blur-sm transition-all"
                     placeholder="Mesajınızın konusu"
                   />
                 </div>
-                
+
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Mesaj
@@ -245,15 +245,15 @@ export default function ContactForm() {
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white resize-vertical"
+                    className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 focus:border-transparent bg-white/50 dark:bg-gray-900/50 text-gray-900 dark:text-white backdrop-blur-sm resize-vertical transition-all"
                     placeholder="Mesajınızı buraya yazın..."
                   />
                 </div>
-                
+
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium"
+                  className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-primary-600 text-white rounded-xl hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all font-bold shadow-lg shadow-primary-600/25 hover:shadow-xl hover:shadow-primary-600/30 hover:-translate-y-0.5"
                 >
                   {isSubmitting ? (
                     <>
@@ -262,7 +262,7 @@ export default function ContactForm() {
                     </>
                   ) : (
                     <>
-                      <Send size={18} />
+                      <Send size={20} />
                       Mesaj Gönder
                     </>
                   )}
