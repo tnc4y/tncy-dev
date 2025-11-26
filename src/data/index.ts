@@ -52,29 +52,11 @@ export const education: Education[] = [
   },
   {
     id: "2",
-    institution: "Espressif Systems",
+    institution: "BTK Akademi",
     degree: "Sertifika",
-    field: "ESP32 Advanced Development",
-    startDate: "2023-01",
-    endDate: "2023-03",
-    description: "ESP32 serisi mikrokontrolcüler için gelişmiş geliştirme teknikleri, WiFi/Bluetooth implementasyonu ve güç yönetimi."
+    field: "Flutter Mobile Development",
+    startDate: "2025-01",
+    endDate: "2025-11",
+    description: "Flutter ile mobil uygulama geliştirme için kapsamlı eğitim."
   },
-  {
-    id: "3",
-    institution: "STMicroelectronics",
-    degree: "Sertifika",
-    field: "STM32 Professional Development",
-    startDate: "2022-06",
-    endDate: "2022-08",
-    description: "STM32 mikrokontrolcüler için profesyonel firmware geliştirme, HAL kütüphaneleri ve real-time sistemler."
-  },
-  {
-    id: "4",
-    institution: "Matter Alliance",
-    degree: "Sertifika",
-    field: "Matter Protocol Specialist",
-    startDate: "2023-09",
-    endDate: "2023-11",
-    description: "Matter protokolü, Thread ağları ve akıllı ev cihazları için interoperabilite standartları."
-  }
 ];
