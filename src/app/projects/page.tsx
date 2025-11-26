@@ -19,54 +19,56 @@ export default function ProjectsPage() {
   ).sort();
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12">
+    <div className="min-h-screen pt-24 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="flex justify-center mb-6">
-            <div className="p-4 bg-blue-100 dark:bg-blue-900 rounded-full">
-              <Code className="w-12 h-12 text-blue-600 dark:text-blue-400" />
+        <div className="text-center mb-16 max-w-3xl mx-auto">
+          <div className="inline-flex justify-center mb-6">
+            <div className="p-4 bg-primary-50 dark:bg-primary-900/30 rounded-2xl text-primary-600 dark:text-primary-400 animate-fade-in">
+              <Code className="w-10 h-10" />
             </div>
           </div>
-          
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 animate-slide-up">
             Projelerim
           </h1>
-          
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Modern web teknolojileri kullanarak geliştirdiğim projeler. Her biri farklı 
+
+          <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed animate-slide-up" style={{ animationDelay: '0.1s' }}>
+            Modern web teknolojileri kullanarak geliştirdiğim projeler. Her biri farklı
             teknolojiler ve yaklaşımlar ile oluşturulmuş, gerçek dünya problemlerine çözümler sunan uygulamalar.
           </p>
         </div>
 
         {/* Technology Filter */}
-        <div className="mb-12">
-          <div className="flex items-center gap-2 mb-4">
-            <Filter className="w-5 h-5 text-gray-600 dark:text-gray-400" />
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
-              Kullanılan Teknolojiler
-            </h2>
-          </div>
-          
-          <div className="flex flex-wrap gap-2">
-            {allTechnologies.map((tech) => (
-              <span
-                key={tech}
-                className="px-4 py-2 text-sm bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition-colors cursor-pointer"
-              >
-                {tech}
-              </span>
-            ))}
+        <div className="mb-16 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+          <div className="glass rounded-2xl p-6">
+            <div className="flex items-center gap-2 mb-4">
+              <Filter className="w-5 h-5 text-primary-600 dark:text-primary-400" />
+              <h2 className="text-lg font-bold text-gray-900 dark:text-white">
+                Kullanılan Teknolojiler
+              </h2>
+            </div>
+
+            <div className="flex flex-wrap gap-2">
+              {allTechnologies.map((tech) => (
+                <span
+                  key={tech}
+                  className="px-4 py-2 text-sm font-medium bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full border border-gray-200 dark:border-gray-700 hover:border-primary-300 dark:hover:border-primary-600 hover:text-primary-600 dark:hover:text-primary-400 transition-all cursor-pointer shadow-sm hover:shadow"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
 
         {/* Featured Projects */}
         {featuredProjects.length > 0 && (
-          <section className="mb-16">
+          <section className="mb-20 animate-slide-up" style={{ animationDelay: '0.3s' }}>
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-8 flex items-center gap-2">
-              ⭐ Öne Çıkan Projeler
+              <span className="text-yellow-500">⭐</span> Öne Çıkan Projeler
             </h2>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {featuredProjects.map((project) => (
                 <ProjectCard key={project.id} project={project} />
@@ -77,11 +79,11 @@ export default function ProjectsPage() {
 
         {/* Other Projects */}
         {otherProjects.length > 0 && (
-          <section>
+          <section className="animate-slide-up" style={{ animationDelay: '0.4s' }}>
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-8">
               Diğer Projeler
             </h2>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {otherProjects.map((project) => (
                 <ProjectCard key={project.id} project={project} />
@@ -92,12 +94,12 @@ export default function ProjectsPage() {
 
         {/* Empty State */}
         {projects.length === 0 && (
-          <div className="text-center py-20">
+          <div className="text-center py-20 glass rounded-3xl">
             <Code className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
               Henüz proje eklenmemiş
             </h3>
-            <p className="text-gray-600 dark:text-gray-300">
+            <p className="text-gray-600 dark:text-gray-400">
               Yakında buraya yeni projeler eklenecek.
             </p>
           </div>

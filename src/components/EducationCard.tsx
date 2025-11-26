@@ -14,46 +14,55 @@ export default function EducationCard({ education }: EducationCardProps) {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-md hover:shadow-xl dark:shadow-gray-900/20 transition-all duration-300 p-6 hover:border-gray-300 dark:hover:border-gray-600">
-      <div className="flex items-start justify-between mb-4">
-        <div className="flex items-start gap-3">
-          <div className="p-2 bg-purple-100 dark:bg-purple-900 rounded-lg">
-            <GraduationCap className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+    <div className="group glass rounded-2xl p-8 hover:-translate-y-1 transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/5 relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-32 h-32 bg-primary-500/5 rounded-full blur-3xl -mr-16 -mt-16 transition-all group-hover:bg-primary-500/10" />
+
+      <div className="flex flex-col md:flex-row md:items-start gap-6 relative z-10">
+        <div className="flex-shrink-0">
+          <div className="p-4 bg-primary-50 dark:bg-primary-900/30 rounded-2xl text-primary-600 dark:text-primary-400 group-hover:scale-110 transition-transform duration-300">
+            <GraduationCap className="w-8 h-8" />
           </div>
-          
-          <div>
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-1">
-              {education.degree}
-            </h3>
-            <h4 className="text-lg text-purple-600 dark:text-purple-400 font-medium mb-1">
-              {education.institution}
-            </h4>
-            <p className="text-gray-600 dark:text-gray-300 font-medium">
+        </div>
+
+        <div className="flex-grow">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2 mb-4">
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                {education.degree}
+              </h3>
+              <h4 className="text-lg text-primary-600 dark:text-primary-400 font-medium">
+                {education.institution}
+              </h4>
+            </div>
+
+            <div className="flex flex-col md:items-end gap-1 text-sm text-gray-500 dark:text-gray-400">
+              <div className="flex items-center gap-1.5 bg-gray-50 dark:bg-gray-800/50 px-3 py-1 rounded-full">
+                <Calendar size={14} />
+                <span>
+                  {formatDate(education.startDate)} - {education.endDate ? formatDate(education.endDate) : 'Devam Ediyor'}
+                </span>
+              </div>
+              {education.gpa && (
+                <div className="font-medium text-primary-600 dark:text-primary-400 px-3 py-1">
+                  GPA: {education.gpa}
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div className="mb-4">
+            <p className="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
               {education.field}
             </p>
           </div>
-        </div>
-        
-        <div className="text-sm text-gray-500 dark:text-gray-400 text-right">
-          <div className="flex items-center gap-1 mb-1">
-            <Calendar size={14} />
-            <span>
-              {formatDate(education.startDate)} - {education.endDate ? formatDate(education.endDate) : 'Devam Ediyor'}
-            </span>
-          </div>
-          {education.gpa && (
-            <div className="font-medium text-gray-700 dark:text-gray-300">
-              GPA: {education.gpa}
-            </div>
+
+          {education.description && (
+            <p className="text-gray-600 dark:text-gray-300 leading-relaxed border-t border-gray-100 dark:border-gray-700/50 pt-4">
+              {education.description}
+            </p>
           )}
         </div>
       </div>
-      
-      {education.description && (
-        <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-          {education.description}
-        </p>
-      )}
     </div>
   );
 }

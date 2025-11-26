@@ -9,59 +9,62 @@ interface BlogCardProps {
 
 export default function BlogCard({ post }: BlogCardProps) {
   return (
-    <article className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-md hover:shadow-xl dark:shadow-gray-900/20 transition-all duration-300 overflow-hidden hover:border-gray-300 dark:hover:border-gray-600">
-      <div className="p-6">
-        {post.featured && (
-          <span className="inline-block px-3 py-1 text-xs bg-yellow-100 dark:bg-yellow-900/50 text-yellow-800 dark:text-yellow-200 rounded-full mb-3 border border-yellow-200 dark:border-yellow-700">
-            Öne Çıkan
-          </span>
-        )}
-        
-        <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-          <Link href={`/blog/${post.slug}`}>
+    <article className="group glass rounded-2xl overflow-hidden hover:-translate-y-2 transition-all duration-300 hover:shadow-2xl hover:shadow-primary-500/10 flex flex-col h-full">
+      <div className="p-8 flex flex-col h-full">
+        <div className="flex items-center justify-between mb-4">
+          {post.featured && (
+            <span className="inline-block px-3 py-1 text-xs font-medium bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 rounded-full border border-yellow-200 dark:border-yellow-700/50">
+              Öne Çıkan
+            </span>
+          )}
+
+          <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 ml-auto">
+            <Calendar size={14} />
+            <span>{format(new Date(post.date), 'dd MMM yyyy')}</span>
+          </div>
+        </div>
+
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+          <Link href={`/blog/${post.slug}`} className="block">
             {post.title}
           </Link>
         </h2>
-        
-        <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+
+        <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed line-clamp-3 flex-grow">
           {post.description}
         </p>
-        
-        <div className="flex flex-wrap gap-2 mb-4">
+
+        <div className="flex flex-wrap gap-2 mb-6">
           {post.tags.map((tag) => (
             <Link
               key={tag}
               href={`/blog/tags/${tag.toLowerCase()}`}
-              className="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700/80 text-gray-700 dark:text-gray-300 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors border border-gray-200 dark:border-gray-600"
+              className="px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-full hover:bg-primary-50 dark:hover:bg-primary-900/30 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
             >
               #{tag}
             </Link>
           ))}
         </div>
-        
-        <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-1">
+
+        <div className="flex items-center justify-between pt-6 border-t border-gray-100 dark:border-gray-700/50 mt-auto">
+          <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
+            <div className="flex items-center gap-1.5">
               <User size={14} />
               <span>{post.author}</span>
             </div>
-            
-            <div className="flex items-center gap-1">
-              <Calendar size={14} />
-              <span>{format(new Date(post.date), 'dd MMM yyyy')}</span>
-            </div>
-            
-            <div className="flex items-center gap-1">
+
+            <div className="flex items-center gap-1.5">
               <Clock size={14} />
-              <span>{post.readingTime} dk okuma</span>
+              <span>{post.readingTime} dk</span>
             </div>
           </div>
-          
+
           <Link
             href={`/blog/${post.slug}`}
-            className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium"
+            className="flex items-center gap-1 text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium text-sm group/link"
           >
-            Devamını Oku →
+            Devamını Oku
+            <span className="group-hover/link:translate-x-1 transition-transform">→</span>
           </Link>
         </div>
       </div>
