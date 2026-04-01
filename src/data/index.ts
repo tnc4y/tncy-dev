@@ -4,13 +4,12 @@ export const personalInfo: PersonalInfo = {
   name: "Tuncay",
   profileImage: "https://tncy-dev.vercel.app/profile.jpeg",
   title: "Web and Mobile Developer",
-  email: "tnc4yy@gmail.com",
+  email: "hi@tncy.dev",
   location: "Adana, Türkiye",
   bio: "Websitesi ve Mobil Uygulama geliştiriyorum",
   socialLinks: {
     github: "https://github.com/tnc4y",
     linkedin: "https://linkedin.com/in/tnc4y",
-    twitter: "https://twitter.com/tnc4y",
     website: "https://tncy.dev"
   }
 };
@@ -21,10 +20,17 @@ export const projects: Project[] = [
     title: "1.5 Adana Teknoloji Takımları Mobil Uygulaması",
     description: "İşkur Gençlik Programı Kapsamında 1.5 Adana Teknoloji Takımları için Tanıtım ve Duyuru uygulaması geliştirdim",
     technologies: ["Flutter", "Firebase", "Dart"],
-    demoUrl: "https://smart-home-demo.com",
-    githubUrl: "https://github.com/tnc4y/",
+    demoUrl: "https://play.google.com/store/apps/details?id=com.birbucukadana",
+    githubUrl: "https://github.com/tnc4y/1.5-Adana-Mobil-Uygulama",
     featured: true
-  }
+  },
+  {
+    id: "2",
+    title: "Chaemi: Mobile IoT Development",
+    description: "Chaemi, IoT geliştiricileri için mobil uygulama ile Esp32 tabanlı cihazların cloud üzerinden kolayca yönetilmesini sağlayan bir platformdur. Proje geliştirme sürecindedir.",
+    technologies: ["Flutter", "Dart", "ESP-IDF", "MicroPython", "mqtt", ],
+    featured: true
+  },
 ];
 
 export const experiences: Experience[] = [
@@ -49,14 +55,5 @@ export const education: Education[] = [
     endDate: "2028-06",
     description: "Gömülü sistemler, mikroişlemciler, dijital sinyal işleme, kontrol sistemleri ve elektronik devre tasarımı üzerine kapsamlı eğitim.",
     gpa: "3.2/4.0"
-  },
-  {
-    id: "2",
-    institution: "BTK Akademi",
-    degree: "Sertifika",
-    field: "Flutter Mobile Development",
-    startDate: "2025-01",
-    endDate: "2025-11",
-    description: "Flutter ile mobil uygulama geliştirme için kapsamlı eğitim."
-  },
+  }
 ];
