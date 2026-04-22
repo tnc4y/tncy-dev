@@ -3,38 +3,34 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Home, User, Briefcase, BookOpen, Mail } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
-
-const navItems = [
-  { href: '/', label: 'Ana Sayfa', icon: Home },
-  { href: '/about', label: 'Hakkımda', icon: User },
-  { href: '/projects', label: 'Projeler', icon: Briefcase },
-  { href: '/blog', label: 'Blog', icon: BookOpen },
-  { href: '/contact', label: 'İletişim', icon: Mail },
-];
+import LanguageToggle from './LanguageToggle';
+import { useLanguage } from './LanguageProvider';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const { t } = useLanguage();
+
+  const navItems = [
+    { href: '/', label: t('nav.home') },
+    { href: '/about', label: t('nav.about') },
+    { href: '/projects', label: t('nav.projects') },
+    { href: '/blog', label: t('nav.blog') },
+    { href: '/contact', label: t('nav.contact') },
+  ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-800/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          {/* Logo */}
-          <Link href="/" className="flex items-center group">
-            <span className="text-2xl font-bold tracking-tight">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-purple-600 dark:from-primary-400 dark:to-purple-400 group-hover:from-purple-600 group-hover:to-primary-600 transition-all duration-500">
-                tncy.dev
-              </span>
-            </span>
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-stone-50/80 dark:bg-zinc-950/80 backdrop-blur border-b hairline">
+      <div className="max-w-5xl mx-auto px-6">
+        <div className="flex justify-between items-center h-16">
+          <Link href="/" className="font-mono text-sm font-medium tracking-tight">
+            tncy<span className="text-primary-500">.</span>dev
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-2">
+          <div className="hidden md:flex items-center gap-8">
             {navItems.map((item) => {
-              const Icon = item.icon;
               const isActive = pathname === item.href ||
                 (item.href !== '/' && pathname.startsWith(item.href));
 
@@ -42,39 +38,39 @@ export default function Navigation() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${isActive
-                    ? 'text-white bg-primary-600 shadow-lg shadow-primary-500/25'
-                    : 'text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20'
-                    }`}
+                  className={`text-sm transition-colors ${
+                    isActive
+                      ? 'text-zinc-900 dark:text-zinc-50 font-medium'
+                      : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50'
+                  }`}
                 >
-                  <Icon size={18} />
                   {item.label}
                 </Link>
               );
             })}
-            <div className="pl-4 ml-4 border-l border-gray-200 dark:border-gray-700">
+            <div className="flex items-center gap-4 pl-6 border-l hairline">
+              <LanguageToggle />
               <ThemeToggle />
             </div>
           </div>
 
-          {/* Mobile menu button and theme toggle */}
-          <div className="md:hidden flex items-center gap-4">
+          <div className="md:hidden flex items-center gap-3">
+            <LanguageToggle />
             <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-full text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 focus:outline-none transition-colors"
+              className="p-2 text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-50"
+              aria-label="Menu"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden absolute top-20 left-0 right-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-b border-gray-200 dark:border-gray-800 shadow-xl animate-slide-up">
-            <div className="px-4 py-6 space-y-2">
+          <div className="md:hidden absolute top-16 left-0 right-0 bg-stone-50 dark:bg-zinc-950 border-b hairline">
+            <div className="px-6 py-4 flex flex-col">
               {navItems.map((item) => {
-                const Icon = item.icon;
                 const isActive = pathname === item.href ||
                   (item.href !== '/' && pathname.startsWith(item.href));
 
@@ -83,12 +79,12 @@ export default function Navigation() {
                     key={item.href}
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className={`flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium transition-all ${isActive
-                      ? 'text-white bg-primary-600 shadow-lg shadow-primary-500/25'
-                      : 'text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20'
-                      }`}
+                    className={`py-3 text-sm border-b hairline last:border-0 ${
+                      isActive
+                        ? 'text-zinc-900 dark:text-zinc-50 font-medium'
+                        : 'text-zinc-500 dark:text-zinc-400'
+                    }`}
                   >
-                    <Icon size={20} />
                     {item.label}
                   </Link>
                 );

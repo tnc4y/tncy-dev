@@ -1,7 +1,11 @@
+export type Locale = 'tr' | 'en';
+
+export type Localized = string | { tr: string; en: string };
+
 export interface Project {
   id: string;
   title: string;
-  description: string;
+  description: Localized;
   technologies: string[];
   imageUrl?: string;
   demoUrl?: string;
@@ -12,10 +16,10 @@ export interface Project {
 export interface Experience {
   id: string;
   company: string;
-  position: string;
+  position: Localized;
   startDate: string;
   endDate?: string;
-  description: string;
+  description: Localized;
   technologies: string[];
   location: string;
 }
@@ -23,11 +27,11 @@ export interface Experience {
 export interface Education {
   id: string;
   institution: string;
-  degree: string;
+  degree: Localized;
   field: string;
   startDate: string;
   endDate?: string;
-  description?: string;
+  description?: Localized;
   gpa?: string;
 }
 
@@ -45,11 +49,11 @@ export interface BlogPost {
 
 export interface PersonalInfo {
   name: string;
-  title: string;
+  title: Localized;
   email: string;
   phone?: string;
-  location: string;
-  bio: string;
+  location: Localized;
+  bio: Localized;
   profileImage?: string;
   socialLinks: {
     github?: string;

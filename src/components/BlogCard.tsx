@@ -1,73 +1,53 @@
+'use client';
+
 import Link from 'next/link';
-import { Calendar, Clock, User } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { BlogPost } from '@/types';
 import { format } from 'date-fns';
+import { useLanguage } from './LanguageProvider';
 
 interface BlogCardProps {
   post: BlogPost;
 }
 
 export default function BlogCard({ post }: BlogCardProps) {
+  const { t } = useLanguage();
+
   return (
-    <article className="group glass rounded-2xl overflow-hidden hover:-translate-y-2 transition-all duration-300 hover:shadow-2xl hover:shadow-primary-500/10 flex flex-col h-full">
-      <div className="p-8 flex flex-col h-full">
-        <div className="flex items-center justify-between mb-4">
-          {post.featured && (
-            <span className="inline-block px-3 py-1 text-xs font-medium bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 rounded-full border border-yellow-200 dark:border-yellow-700/50">
-              Öne Çıkan
-            </span>
-          )}
+    <Link
+      href={`/blog/${post.slug}`}
+      className="group block py-6 border-b hairline hover:bg-white dark:hover:bg-zinc-900/40 transition-colors -mx-4 px-4"
+    >
+      <div className="flex items-baseline gap-6">
+        <time className="font-mono text-xs text-zinc-500 dark:text-zinc-500 w-24 shrink-0 hidden sm:block">
+          {format(new Date(post.date), 'dd.MM.yyyy')}
+        </time>
 
-          <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 ml-auto">
-            <Calendar size={14} />
-            <span>{format(new Date(post.date), 'dd MMM yyyy')}</span>
-          </div>
-        </div>
-
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-          <Link href={`/blog/${post.slug}`} className="block">
-            {post.title}
-          </Link>
-        </h2>
-
-        <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed line-clamp-3 flex-grow">
-          {post.description}
-        </p>
-
-        <div className="flex flex-wrap gap-2 mb-6">
-          {post.tags.map((tag) => (
-            <Link
-              key={tag}
-              href={`/blog/tags/${tag.toLowerCase()}`}
-              className="px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-full hover:bg-primary-50 dark:hover:bg-primary-900/30 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-            >
-              #{tag}
-            </Link>
-          ))}
-        </div>
-
-        <div className="flex items-center justify-between pt-6 border-t border-gray-100 dark:border-gray-700/50 mt-auto">
-          <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
-            <div className="flex items-center gap-1.5">
-              <User size={14} />
-              <span>{post.author}</span>
-            </div>
-
-            <div className="flex items-center gap-1.5">
-              <Clock size={14} />
-              <span>{post.readingTime} dk</span>
-            </div>
+        <div className="flex-1 min-w-0">
+          <div className="flex items-baseline justify-between gap-4">
+            <h3 className="text-base sm:text-lg font-medium tracking-tight group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+              {post.title}
+            </h3>
+            <ArrowUpRight
+              size={16}
+              className="shrink-0 text-zinc-400 dark:text-zinc-600 group-hover:text-primary-600 dark:group-hover:text-primary-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all"
+            />
           </div>
 
-          <Link
-            href={`/blog/${post.slug}`}
-            className="flex items-center gap-1 text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium text-sm group/link"
-          >
-            Devamını Oku
-            <span className="group-hover/link:translate-x-1 transition-transform">→</span>
-          </Link>
+          <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1.5 line-clamp-2 leading-relaxed">
+            {post.description}
+          </p>
+
+          <div className="flex items-center gap-3 mt-3 font-mono text-[11px] text-zinc-500 dark:text-zinc-500">
+            <time className="sm:hidden">{format(new Date(post.date), 'dd.MM.yyyy')}</time>
+            <span className="sm:hidden">·</span>
+            <span>{post.readingTime} {t('blog.minRead')}</span>
+            {post.tags.slice(0, 3).map((tag) => (
+              <span key={tag}>·  #{tag}</span>
+            ))}
+          </div>
         </div>
       </div>
-    </article>
+    </Link>
   );
 }
