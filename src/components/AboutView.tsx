@@ -67,10 +67,16 @@ export default function AboutView() {
               <Mail size={14} />
               {t('about.contact')}
             </Link>
-            <button className="inline-flex items-center gap-1.5 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors">
+            <a
+              href="/Tuncay_Yilmaz_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              download
+              className="inline-flex items-center gap-1.5 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors"
+            >
               <Download size={14} />
               {t('about.downloadCv')}
-            </button>
+            </a>
           </div>
         </div>
       </section>
